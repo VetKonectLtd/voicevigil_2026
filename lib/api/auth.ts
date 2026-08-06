@@ -1,4 +1,4 @@
-import { apiClient } from './client'
+import { apiClient } from "./client";
 import type {
   RegisterPayload,
   RegisterResponse,
@@ -7,30 +7,36 @@ import type {
   ForgotPasswordPayload,
   ForgotPasswordResponse,
   ResetPasswordPayload,
-} from '@/types'
+} from "@/types";
 
 export const authApi = {
   register: (payload: RegisterPayload) =>
-    apiClient<RegisterResponse>('/vigil_registration.php', {
-      method: 'POST',
+    apiClient<RegisterResponse>("/vigil_registration.php", {
+      method: "POST",
       body: JSON.stringify(payload),
     }),
 
   login: (payload: LoginPayload) =>
-    apiClient<LoginResponse>('/vigil_login.php', {
-      method: 'POST',
+    apiClient<LoginResponse>("/vigil_login.php", {
+      method: "POST",
       body: JSON.stringify(payload),
     }),
 
   forgotPassword: (payload: ForgotPasswordPayload) =>
-    apiClient<ForgotPasswordResponse>('/auth/forgot-password', {
-      method: 'POST',
+    apiClient<ForgotPasswordResponse>("/auth/forgot-password", {
+      method: "POST",
       body: JSON.stringify(payload),
     }),
 
   resetPassword: (payload: ResetPasswordPayload) =>
-    apiClient<{ message: string }>('/auth/reset-password', {
-      method: 'POST',
+    apiClient<{ message: string }>("/auth/reset-password", {
+      method: "POST",
       body: JSON.stringify(payload),
     }),
-}
+
+  loginadmin: (payload: LoginPayload) =>
+    apiClient<LoginResponse>("/vigil_admin_login.php", {
+      method: "POST",
+      body: JSON.stringify(payload),
+    }),
+};

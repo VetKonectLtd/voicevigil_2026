@@ -1,18 +1,19 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
-import { ArrowRight, Facebook, Instagram, Music2 } from 'lucide-react'
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { ArrowRight, Music2 } from "lucide-react";
+import { SiFacebook, SiInstagram } from "@icons-pack/react-simple-icons";
 
 const quickLinks = [
-  { label: 'Problems', href: '#' },
-  { label: 'Our solutions', href: '#' },
-  { label: 'Future of Antibiotics', href: '#' },
-]
+  { label: "Problems", href: "#" },
+  { label: "Our solutions", href: "#" },
+  { label: "Future of Antibiotics", href: "#" },
+];
 
 export default function Footer() {
-  const [email, setEmail] = useState('')
+  const [email, setEmail] = useState("");
 
   return (
     <footer className="border-t border-[#ececec] bg-[#fbfbfb] px-6 py-10 sm:px-10 md:px-14 md:py-12">
@@ -32,9 +33,7 @@ export default function Footer() {
             </span>
           </Link>
 
-          <p className="mt-7 text-[13px] text-[#2f2f2f]">
-            Enter your email to receive newsletter
-          </p>
+          <p className="mt-7 text-[13px] text-[#2f2f2f]">Enter your email to receive newsletter</p>
 
           <div className="mt-4 flex w-full max-w-[248px] items-center rounded-full border border-[#d9d9d9] bg-white p-1 shadow-[0_2px_8px_rgba(0,0,0,0.08)]">
             <input
@@ -83,21 +82,37 @@ export default function Footer() {
             Voicevigil@gmail.com
           </a>
           <div className="mt-4 flex items-center gap-2.5 text-[#1657c0]">
-            <a href="#" aria-label="Facebook" className="inline-flex h-4 w-4 items-center justify-center rounded-full transition-opacity hover:opacity-80">
-              <Facebook size={14} fill="currentColor" strokeWidth={1.8} />
+            <a
+              href="#"
+              aria-label="Facebook"
+              className="inline-flex h-4 w-4 items-center justify-center rounded-full transition-opacity hover:opacity-80"
+            >
+              <SiFacebook size={14} fill="currentColor" strokeWidth={1.8} />
             </a>
-            <a href="#" aria-label="X" className="inline-flex h-4 w-4 items-center justify-center rounded-full border border-current text-[9px] font-semibold leading-none transition-opacity hover:opacity-80">
+            <a
+              href="#"
+              aria-label="X"
+              className="inline-flex h-4 w-4 items-center justify-center rounded-full border border-current text-[9px] font-semibold leading-none transition-opacity hover:opacity-80"
+            >
               X
             </a>
-            <a href="#" aria-label="TikTok" className="inline-flex h-4 w-4 items-center justify-center rounded-full transition-opacity hover:opacity-80">
+            <a
+              href="#"
+              aria-label="TikTok"
+              className="inline-flex h-4 w-4 items-center justify-center rounded-full transition-opacity hover:opacity-80"
+            >
               <Music2 size={14} strokeWidth={2.1} />
             </a>
-            <a href="#" aria-label="Instagram" className="inline-flex h-4 w-4 items-center justify-center rounded-full transition-opacity hover:opacity-80">
-              <Instagram size={14} strokeWidth={2} />
+            <a
+              href="#"
+              aria-label="Instagram"
+              className="inline-flex h-4 w-4 items-center justify-center rounded-full transition-opacity hover:opacity-80"
+            >
+              <SiInstagram size={14} strokeWidth={2} />
             </a>
           </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }

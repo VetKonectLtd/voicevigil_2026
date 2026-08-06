@@ -16,7 +16,7 @@ const inputClass =
 
 export default function LoginPage() {
   const router = useRouter();
-  const { login } = useAuth();
+  const { loginadmin } = useAuth();
 
   const {
     register,
@@ -29,11 +29,10 @@ export default function LoginPage() {
     try {
       console.log({ data });
 
-      const user = await login(data.email, data.password);
+      const user = await loginadmin(data.email, data.password);
       console.log({ user });
 
-      // router.replace(user.role === 'admin' ? '/admin' : '/')
-      router.replace("/");
+      router.replace(user.role === "admin" ? "/admin" : "/");
     } catch {
       setError("root", { message: "Login failed. Please check your credentials and try again." });
     }
