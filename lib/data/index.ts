@@ -75,11 +75,14 @@ export const champActions = [
 ];
 
 export const orangeBtn =
-  "inline-flex whitespace-nowrap rounded-lg border border-[#FBA310] bg-[#FBA310] px-[22px] py-[10px] text-sm font-semibold text-white transition-all hover:border-[#E65100] hover:bg-[#E65100]";
+  "inline-flex items-center justify-center whitespace-nowrap rounded-xl border border-[#FBA310] bg-[#FBA310] px-6 py-3 text-sm font-medium text-white shadow-sm transition-all hover:border-[#E65100] hover:bg-[#E65100]";
+
 export const blueBtn =
-  "inline-flex whitespace-nowrap rounded-lg border border-[#1565C0] bg-[#1565C0] px-[22px] py-[10px] text-sm font-semibold text-white transition-all hover:border-[#0D47A1] hover:bg-[#0D47A1]";
+  "inline-flex items-center justify-center whitespace-nowrap rounded-xl border border-[#1565C0] bg-[#1565C0] px-6 py-3 text-sm font-medium text-white shadow-sm transition-all hover:border-[#0D47A1] hover:bg-[#0D47A1]";
+
 export const blueOutlineBtn =
-  "inline-flex whitespace-nowrap rounded-lg border border-[#1565C0] bg-transparent px-[22px] py-[10px] text-sm font-semibold text-[#1565C0] transition-all hover:bg-[#1565C0] hover:text-white";
+  "inline-flex items-center justify-center whitespace-nowrap rounded-xl border border-[#BFD7ED] bg-white px-6 py-3 text-sm font-medium text-[#1565C0] shadow-sm transition-all hover:border-[#1565C0] hover:bg-[#1565C0] hover:text-white";
+
 export const smallBtn = (variant: "orange" | "blue" | "blueOutline") => {
   const base =
     "inline-flex whitespace-nowrap rounded-[4px] px-4 py-2 text-[11px] font-medium transition-colors md:px-5 md:text-[12px]";

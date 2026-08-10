@@ -1,1 +1,1 @@
-export const IMAGE_BASE_URL = "https://voicevigil.vetkonect.com/blogs_images";
+export const IMAGE_BASE_URL = "https://voicevigilapi.vetkonect.com/blogs_images";

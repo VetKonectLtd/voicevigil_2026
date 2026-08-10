@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { champActions } from "@/lib/data";
 import React from "react";
 
@@ -18,9 +19,29 @@ const Solution = () => {
               into local languages and culturally relevant messages.
             </p>
           </div>
-          <div className="relative mx-auto h-[210px] w-full max-w-[300px]">
-            <div className="absolute left-0 top-0 h-[140px] w-[68%] rounded-2xl bg-[#D8D8D8]" />
-            <div className="absolute bottom-0 right-0 h-[140px] w-[68%] rounded-2xl bg-[#D8D8D8]" />
+
+          <div className="relative mx-auto h-[260px] w-full max-w-[300px]">
+            {/* Top-left image, larger */}
+            <div className="absolute left-0 top-0 h-[190px] w-[78%] overflow-hidden rounded-2xl shadow-md">
+              <Image
+                src="/solution/img2.png"
+                alt="Language Champions at a community outreach event"
+                fill
+                sizes="(max-width: 768px) 60vw, 300px"
+                className="object-cover"
+              />
+            </div>
+
+            {/* Bottom-right image, smaller, overlapping */}
+            <div className="absolute bottom-0 right-0 h-[150px] w-[68%] overflow-hidden rounded-2xl shadow-lg ring-4 ring-white">
+              <Image
+                src="/solution/img1.png"
+                alt="Language Champion speaking at a radio broadcast"
+                fill
+                sizes="(max-width: 768px) 50vw, 250px"
+                className="object-cover"
+              />
+            </div>
           </div>
         </div>
 

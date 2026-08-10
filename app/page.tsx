@@ -71,8 +71,8 @@ export default function HomePage() {
                     <Image
                       src={t.avatar}
                       alt={`${t.name}'s avatar`}
-                      width={40}
-                      height={40}
+                      width={80}
+                      height={80}
                       className="h-full w-full object-cover"
                       priority={activeTestimony === 0}
                     />

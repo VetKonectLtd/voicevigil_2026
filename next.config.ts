@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "voicevigil.vetkonect.com",
+        hostname: "voicevigilapi.vetkonect.com",
         pathname: "/**",
       },
       {

@@ -16,7 +16,8 @@
     "next": "^15.5.22",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "react-hook-form": "^7.78.0"
+    "react-hook-form": "^7.78.0",
+    "swiper": "^14.1.0"
   },
   "devDependencies": {
     "@types/node": "^20",

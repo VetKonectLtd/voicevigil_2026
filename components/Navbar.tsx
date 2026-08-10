@@ -17,6 +17,7 @@ export default function Navbar() {
 
   const showAdminLink = user?.role === "admin" && pathname.startsWith("/admin");
 
+  // if the user.role exists whether user or admin, it should not display the login button cause that means the usdr is logged in.
   return (
     <>
       <nav className="sticky overflow-hidden top-0 z-[100] flex h-16 items-center justify-between border-b border-[#E0E5EF] bg-white px-10 shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
@@ -40,13 +41,22 @@ export default function Navbar() {
               Admin
             </Link>
           )}
-
+          {/* 
           <Link
             href={`${showAdminLink ? "/admin/login" : "/login"}`}
             className={linkClass(`${showAdminLink ? "/admin/login" : "/login"}`)}
           >
             Login
-          </Link>
+          </Link> */}
+
+          {!user && (
+            <Link
+              href={`${showAdminLink ? "/admin/login" : "/login"}`}
+              className={linkClass(`${showAdminLink ? "/admin/login" : "/login"}`)}
+            >
+              Login
+            </Link>
+          )}
 
           {/* Swapped Link to an interactive button component */}
           <button
