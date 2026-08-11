@@ -22,6 +22,12 @@ export const authApi = {
       body: JSON.stringify(payload),
     }),
 
+  logout: (payload: LoginPayload) =>
+    apiClient<LoginResponse>("/vigil_logout.php", {
+      method: "POST",
+      body: JSON.stringify(payload),
+    }),
+
   forgotPassword: (payload: ForgotPasswordPayload) =>
     apiClient<ForgotPasswordResponse>("/auth/forgot-password", {
       method: "POST",

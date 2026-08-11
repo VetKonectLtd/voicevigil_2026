@@ -6,42 +6,6 @@ if (!API_KEY) {
   throw new Error("Missing NEXT_PUBLIC_API_KEY");
 }
 
-// ─── Core fetch helper ──────────────────────────────────────────────────────
-
-// export async function apiClient<T>(endpoint: string, options?: RequestInit): Promise<T> {
-
-//   const headers = new Headers(options?.headers);
-
-//   headers.set("Content-Type", "application/json");
-//   headers.set("X-API-KEY", API_KEY!);
-
-//   const response = await fetch(`${API_BASE_URL}${endpoint}`, {
-//     headers: {
-//       "Content-Type": "application/json",
-//       "X-API-KEY": API_KEY,
-//       ...options?.headers,
-//     },
-//     ...options,
-//   });
-
-//   const text = await response.text();
-
-//   let data: any;
-//   try {
-//     data = JSON.parse(text);
-//   } catch {
-//     throw new Error(`Invalid JSON response: ${text}`);
-//   }
-
-//   if (!response.ok) {
-//     const message = data?.message || data?.error || JSON.stringify(data) || "Something went wrong";
-
-//     throw new Error(message);
-//   }
-
-//   return data as T;
-// }
-
 export async function apiClient<T>(endpoint: string, options?: RequestInit): Promise<T> {
   const headers = new Headers(options?.headers);
 
@@ -83,7 +47,7 @@ export const publicApi = {
     contact: string;
     propose: string;
   }) =>
-    fetch("https://voicevigil.vetkonect.com/vigil_partnership.php", {
+    fetch(`${API_BASE_URL}/vigil_partnership.php`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

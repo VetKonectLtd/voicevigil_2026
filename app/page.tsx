@@ -131,7 +131,7 @@ export default function HomePage() {
           communities.
         </p>
         {/* <div className="mx-auto mb-8 h-[140px] w-full max-w-[960px] rounded-[8px] bg-[#D9D9D9] sm:h-[180px] md:h-[210px]" /> */}
-        <div className="mx-auto mb-8 h-[140px] w-full max-w-[960px] rounded-[8px] bg-[#D9D9D9] sm:h-[180px] md:h-[210px]">
+        <div className="mx-auto mb-8 h-[160px] w-full max-w-[960px] rounded-[12px] bg-[#D9D9D9] sm:h-[180px] md:h-[210px] overflow-hidden">
           <img
             src="/movement.png"
             className="h-full w-full object-cover"
@@ -193,7 +193,14 @@ export default function HomePage() {
           By empowering communities with knowledge in their own language, we can slow antimicrobial
           resistance and protect life-saving medicines for future generations.
         </p>
-        <div className="mx-auto mb-6 h-[140px] w-full max-w-[980px] rounded-[8px] bg-[#D9D9D9] sm:h-[180px] md:h-[220px]" />
+        {/* <div className="mx-auto mb-6 h-[140px] w-full max-w-[980px] rounded-[8px] bg-[#D9D9D9] sm:h-[180px] md:h-[220px]" /> */}
+        <div className="mx-auto mb-8 h-[160px] w-full max-w-[960px] rounded-[12px] bg-[#D9D9D9] sm:h-[180px] md:h-[210px] overflow-hidden">
+          <img
+            src="/future.png"
+            className="h-full w-full object-cover"
+            alt="Join the Movement to Protect Antibiotics"
+          />
+        </div>
         <div className="flex justify-center gap-4 max-[600px]:flex-col max-[600px]:items-center">
           <button className={smallBtn("blueOutline")}>Contact Us</button>
           <button className={smallBtn("blue")}>Join Voice Vigil</button>
