@@ -11,6 +11,16 @@ export const blogApi = {
 
 // Add these to your adminApi / client definitions file
 export const blogCommentsApi = {
+  getComment: (blogId: number, page: number, limit: number) =>
+    apiClient<any>("/vigil_comments.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-API-KEY": API_KEY ?? "",
+      },
+      body: JSON.stringify({ blog_id: blogId, page, limit }),
+    }),
+
   addComment: (blogId: number, commentText: string, userId: string, token: string) =>
     apiClient<any>("/vigil_post_comment.php", {
       method: "POST",

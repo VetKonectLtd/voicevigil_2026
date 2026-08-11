@@ -130,7 +130,14 @@ export default function HomePage() {
           Vigil as a Language Champion, partner with us, or support our mission to empower
           communities.
         </p>
-        <div className="mx-auto mb-8 h-[140px] w-full max-w-[960px] rounded-[8px] bg-[#D9D9D9] sm:h-[180px] md:h-[210px]" />
+        {/* <div className="mx-auto mb-8 h-[140px] w-full max-w-[960px] rounded-[8px] bg-[#D9D9D9] sm:h-[180px] md:h-[210px]" /> */}
+        <div className="mx-auto mb-8 h-[140px] w-full max-w-[960px] rounded-[8px] bg-[#D9D9D9] sm:h-[180px] md:h-[210px]">
+          <img
+            src="/movement.png"
+            className="h-full w-full object-cover"
+            alt="Join the Movement to Protect Antibiotics"
+          />
+        </div>
         <div className="flex flex-wrap items-center justify-center gap-3 max-[600px]:flex-col">
           <button className={smallBtn("orange")}>Access Resources</button>
           <button className={smallBtn("blueOutline")}>Become a Language Champion</button>
