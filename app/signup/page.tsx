@@ -1,25 +1,27 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import Image from 'next/image'
-import { useRouter } from 'next/navigation'
-import { useForm } from 'react-hook-form'
-import { useRegisterUser } from '@/lib/hooks'
+import Link from "next/link";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { useRegisterUser } from "@/lib/hooks";
+import { useState } from "react";
 
 interface SignUpFormData {
-  first_name: string
-  last_name: string
-  email: string
-  password: string
-  confirmPassword: string
+  first_name: string;
+  last_name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
 }
 
 const inputClass =
-  'mt-2 w-full rounded-md border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-[#1565C0] focus:bg-white'
+  "mt-2 w-full rounded-md border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-[#1565C0] focus:bg-white";
 
 export default function SignUpPage() {
-  const router = useRouter()
-  const { mutateAsync: registerUser } = useRegisterUser()
+  const router = useRouter();
+  const { mutateAsync: registerUser } = useRegisterUser();
+  const [displayMsg, setDisplayMsg] = useState<string | null>(null);
 
   const {
     register,
@@ -27,25 +29,30 @@ export default function SignUpPage() {
     watch,
     setError,
     formState: { errors, isSubmitting },
-  } = useForm<SignUpFormData>()
+  } = useForm<SignUpFormData>();
 
-  const password = watch('password')
+  const password = watch("password");
 
   const onSubmit = async (data: SignUpFormData) => {
     try {
-      await registerUser({
+      const registeruser = await registerUser({
         email: data.email,
         password: data.password,
         first_name: data.first_name,
         last_name: data.last_name,
-      })
-      router.replace('/login')
+      });
+
+      console.log({ registeruser });
+      if (registeruser.status === true) {
+        setDisplayMsg(registeruser.message);
+      }
+      // router.replace('/login')
     } catch (err) {
-      setError('root', {
-        message: err instanceof Error ? err.message : 'Registration failed. Please try again.',
-      })
+      setError("root", {
+        message: err instanceof Error ? err.message : "Registration failed. Please try again.",
+      });
     }
-  }
+  };
 
   return (
     <main className="min-h-screen bg-white px-4 py-8 text-slate-900 sm:px-6 lg:px-8">
@@ -65,9 +72,7 @@ export default function SignUpPage() {
             <h1 className="mt-3 text-3xl font-semibold text-slate-900">Sign Up</h1>
           </div>
 
-          {errors.root && (
-            <p className="mb-4 text-sm text-red-500">{errors.root.message}</p>
-          )}
+          {errors.root && <p className="mb-4 text-sm text-red-500">{errors.root.message}</p>}
 
           <form className="space-y-2" onSubmit={handleSubmit(onSubmit)} noValidate>
             {/* First Name */}
@@ -75,7 +80,7 @@ export default function SignUpPage() {
               <input
                 type="text"
                 placeholder="First Name"
-                {...register('first_name', { required: 'First name is required' })}
+                {...register("first_name", { required: "First name is required" })}
                 className={inputClass}
               />
               {errors.first_name && (
@@ -88,7 +93,7 @@ export default function SignUpPage() {
               <input
                 type="text"
                 placeholder="Last Name"
-                {...register('last_name', { required: 'Last name is required' })}
+                {...register("last_name", { required: "Last name is required" })}
                 className={inputClass}
               />
               {errors.last_name && (
@@ -101,18 +106,16 @@ export default function SignUpPage() {
               <input
                 type="email"
                 placeholder="Email Address"
-                {...register('email', {
-                  required: 'Email is required',
+                {...register("email", {
+                  required: "Email is required",
                   pattern: {
                     value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                    message: 'Enter a valid email address',
+                    message: "Enter a valid email address",
                   },
                 })}
                 className={inputClass}
               />
-              {errors.email && (
-                <p className="mt-1 text-xs text-red-500">{errors.email.message}</p>
-              )}
+              {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email.message}</p>}
             </div>
 
             {/* Password */}
@@ -120,9 +123,9 @@ export default function SignUpPage() {
               <input
                 type="password"
                 placeholder="Password"
-                {...register('password', {
-                  required: 'Password is required',
-                  minLength: { value: 8, message: 'Password must be at least 8 characters' },
+                {...register("password", {
+                  required: "Password is required",
+                  minLength: { value: 8, message: "Password must be at least 8 characters" },
                 })}
                 className={inputClass}
               />
@@ -136,9 +139,9 @@ export default function SignUpPage() {
               <input
                 type="password"
                 placeholder="Confirm Password"
-                {...register('confirmPassword', {
-                  required: 'Please confirm your password',
-                  validate: (value) => value === password || 'Passwords do not match',
+                {...register("confirmPassword", {
+                  required: "Please confirm your password",
+                  validate: (value) => value === password || "Passwords do not match",
                 })}
                 className={inputClass}
               />
@@ -147,12 +150,14 @@ export default function SignUpPage() {
               )}
             </div>
 
+            {displayMsg && <p className="my-4 text-sm text-blue-500">{displayMsg}</p>}
+
             <button
               type="submit"
               disabled={isSubmitting}
               className="mt-2 w-full rounded-md bg-[#1565C0] px-4 py-3 text-sm font-semibold text-white transition hover:bg-[#0D47A1] disabled:opacity-60"
             >
-              {isSubmitting ? 'Creating account…' : 'Sign up'}
+              {isSubmitting ? "Creating account…" : "Sign up"}
             </button>
           </form>
 
@@ -163,13 +168,19 @@ export default function SignUpPage() {
               type="button"
               className="mt-4 inline-flex w-full items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:bg-white"
             >
-              <Image src="/google.png" alt="Google logo" width={20} height={20} className="h-5 w-5" />
+              <Image
+                src="/google.png"
+                alt="Google logo"
+                width={20}
+                height={20}
+                className="h-5 w-5"
+              />
               Continue with Google
             </button>
           </div>
 
           <p className="mt-8 text-center text-sm text-slate-500">
-            Already have an account?{' '}
+            Already have an account?{" "}
             <Link href="/login" className="font-semibold text-[#1565C0] hover:text-[#0D47A1]">
               Login
             </Link>
@@ -177,5 +188,5 @@ export default function SignUpPage() {
         </div>
       </div>
     </main>
-  )
+  );
 }

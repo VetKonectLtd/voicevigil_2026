@@ -51,6 +51,7 @@ export interface AuthUser {
 // ─── API responses ───────────────────────────────────────────────────────────
 export interface RegisterResponse {
   message: string;
+  status: boolean;
 }
 
 export interface LoginResponse {
