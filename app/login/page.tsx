@@ -27,10 +27,7 @@ export default function LoginPage() {
 
   const onSubmit = async (data: LoginFormData) => {
     try {
-      console.log({ data });
-
-      const user = await login(data.email, data.password);
-      console.log({ user });
+      await login(data.email, data.password);
 
       // router.replace(user.role === 'admin' ? '/admin' : '/')
       router.replace("/");
