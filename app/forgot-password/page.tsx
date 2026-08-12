@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { useForgotPassword } from "@/lib/hooks";
+import { useState } from "react";
 
 interface ForgotPasswordFormData {
   email: string;
@@ -17,10 +18,12 @@ export default function ForgotPasswordPage() {
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<ForgotPasswordFormData>();
+  const [displayMsg, setDisplayMsg] = useState<{ message: string; status: boolean } | null>(null);
 
   const onSubmit = async (data: ForgotPasswordFormData) => {
     const password = await forgotPassword({ email: data.email });
     console.log({ forgotten_password: password });
+    setDisplayMsg({ message: password.message, status: password.status });
   };
 
   return (
@@ -44,9 +47,11 @@ export default function ForgotPasswordPage() {
             </p>
           </div>
 
-          {isSuccess && (
-            <p className="mb-4 rounded-md bg-green-50 px-4 py-3 text-sm text-green-700">
-              Password reset link sent! Check your inbox.
+          {displayMsg && (
+            <p
+              className={`${"mb-4 rounded-md bg-green-50 px-4 py-3 text-sm"} ${displayMsg?.status ? "text-green-600" : "text-red-600"}`}
+            >
+              {displayMsg?.message || ""}
             </p>
           )}
           {isError && (

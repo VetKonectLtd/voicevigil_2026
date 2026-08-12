@@ -46,6 +46,41 @@ export const adminApi = {
       body: JSON.stringify({ page, limit }),
     }),
 
+  createBlogListing: (data: any, userId: string, token: string) => {
+    const blog_image = data.blog_image as string;
+    const blog_text = data.blog_text as string;
+
+    return apiClient<any>("/vigil_blog_post.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-API-KEY": API_KEY ?? "",
+        Authorization: `Bearer ${token}`,
+        "user-id": userId,
+      },
+      body: JSON.stringify({ blog_image, blog_text, blog_status: 0 }),
+    });
+  },
+
+  updateBlogListing: (data: any, userId: string, token: string) => {
+    const blog_image = data.blog_image as string;
+    const blog_text = data.blog_text as string;
+    const blog_id = data.blog_id as number;
+    const blog_status = data.blog_status as number;
+    const remove_image = data.removed_image == 1 ? true : (false as boolean);
+
+    return apiClient<any>("/vigil_blog_editing.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-API-KEY": API_KEY ?? "",
+        Authorization: `Bearer ${token}`,
+        "user-id": userId,
+      },
+      body: JSON.stringify({ blog_image, blog_text, blog_status, remove_image, blog_id }),
+    });
+  },
+
   deleteBlog: (blogId: number, userId: string, token: string) =>
     apiClient<any>("/vigil_admin_delete_blog.php", {
       method: "POST",

@@ -29,7 +29,7 @@ export const authApi = {
     }),
 
   forgotPassword: (payload: ForgotPasswordPayload) =>
-    apiClient<ForgotPasswordResponse>("/forgot-password.php", {
+    apiClient<ForgotPasswordResponse>("/vigil_forgotten_password.php", {
       headers: {
         "Content-Type": "application/json",
         "X-API-KEY": "a8f91c2b4e9d7f6a1c0b3d5e8f9a1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8",

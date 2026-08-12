@@ -70,6 +70,7 @@ export interface LoginResponse {
 
 export interface ForgotPasswordResponse {
   message: string;
+  status: boolean;
 }
 
 export interface PartnerResponse {

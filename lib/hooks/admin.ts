@@ -53,3 +53,41 @@ export const useDeleteBlog = () => {
     },
   });
 };
+
+export const useCreateBlog = () => {
+  const { user, token } = useAuth();
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async (data: any) => {
+      // Ensures the API response is returned to mutateAsync
+      return await adminApi.createBlogListing(data, user!.id, token!);
+    },
+    onSuccess: (data) => {
+      console.log("Mutation onSuccess response:", data);
+      queryClient.invalidateQueries({ queryKey: ["blogListings"] });
+    },
+    onError: (error) => {
+      console.error("Mutation onError:", error);
+    },
+  });
+};
+
+export const useUpdateBlog = () => {
+  const { user, token } = useAuth();
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async (data: any) => {
+      // Ensures the API response is returned to mutateAsync
+      return await adminApi.updateBlogListing(data, user!.id, token!);
+    },
+    onSuccess: (data) => {
+      console.log("Mutation onSuccess response:", data);
+      queryClient.invalidateQueries({ queryKey: ["blogListings"] });
+    },
+    onError: (error) => {
+      console.error("Mutation onError:", error);
+    },
+  });
+};

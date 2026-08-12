@@ -44,7 +44,11 @@ export default function BlogAdminPage() {
       </div>
 
       {/* Conditional UI Injection */}
-      {activeTab === "create" ? <CreateBlogForm /> : <BlogList onBlogsLoadedCount={setBlogCount} />}
+      {activeTab === "create" ? (
+        <CreateBlogForm />
+      ) : (
+        <BlogList setActiveTab={setActiveTab} onBlogsLoadedCount={setBlogCount} />
+      )}
     </div>
   );
 }
