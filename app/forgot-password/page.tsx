@@ -1,26 +1,27 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import Image from 'next/image'
-import { useForm } from 'react-hook-form'
-import { useForgotPassword } from '@/lib/hooks'
+import Link from "next/link";
+import Image from "next/image";
+import { useForm } from "react-hook-form";
+import { useForgotPassword } from "@/lib/hooks";
 
 interface ForgotPasswordFormData {
-  email: string
+  email: string;
 }
 
 export default function ForgotPasswordPage() {
-  const { mutateAsync: forgotPassword, isSuccess, isError, error } = useForgotPassword()
+  const { mutateAsync: forgotPassword, isSuccess, isError, error } = useForgotPassword();
 
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<ForgotPasswordFormData>()
+  } = useForm<ForgotPasswordFormData>();
 
   const onSubmit = async (data: ForgotPasswordFormData) => {
-    await forgotPassword({ email: data.email })
-  }
+    const password = await forgotPassword({ email: data.email });
+    console.log({ forgotten_password: password });
+  };
 
   return (
     <main className="min-h-screen bg-white px-4 py-8 text-slate-900 sm:px-6 lg:px-8">
@@ -50,7 +51,9 @@ export default function ForgotPasswordPage() {
           )}
           {isError && (
             <p className="mb-4 rounded-md bg-red-50 px-4 py-3 text-sm text-red-600">
-              {error instanceof Error ? error.message : 'Failed to send reset email. Please try again.'}
+              {error instanceof Error
+                ? error.message
+                : "Failed to send reset email. Please try again."}
             </p>
           )}
 
@@ -59,18 +62,16 @@ export default function ForgotPasswordPage() {
               <input
                 type="email"
                 placeholder="Email address"
-                {...register('email', {
-                  required: 'Email is required',
+                {...register("email", {
+                  required: "Email is required",
                   pattern: {
                     value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                    message: 'Enter a valid email address',
+                    message: "Enter a valid email address",
                   },
                 })}
                 className="w-full rounded-md border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-[#1565C0] focus:bg-white"
               />
-              {errors.email && (
-                <p className="mt-1 text-xs text-red-500">{errors.email.message}</p>
-              )}
+              {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email.message}</p>}
             </div>
 
             <button
@@ -78,13 +79,13 @@ export default function ForgotPasswordPage() {
               disabled={isSubmitting || isSuccess}
               className="w-full rounded-md bg-[#1565C0] px-4 py-3 text-sm font-semibold text-white transition hover:bg-[#0D47A1] disabled:opacity-60"
             >
-              {isSubmitting ? 'Sending…' : 'Send reset link'}
+              {isSubmitting ? "Sending…" : "Send reset link"}
             </button>
           </form>
 
           <div className="mt-6 text-center text-sm text-slate-500">
             <p>
-              Remembered your password?{' '}
+              Remembered your password?{" "}
               <Link href="/login" className="font-semibold text-[#1565C0] hover:text-[#0D47A1]">
                 Login
               </Link>
@@ -93,5 +94,5 @@ export default function ForgotPasswordPage() {
         </div>
       </div>
     </main>
-  )
+  );
 }
