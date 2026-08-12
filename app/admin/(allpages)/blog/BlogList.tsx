@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { IMAGE_BASE_URL } from "@/components/pathConfig";
 import { useBlogListing, useDeleteBlog } from "@/lib/hooks";
 import { MoreVertical, Edit2, Trash2, X, Power } from "lucide-react";
-import CreateBlogForm from "./CreateBlogForm"; // Import your creation form component
+import CreateBlogForm from "./CreateBlogForm";
 
 interface BlogListProps {
   setActiveTab: (tab: "create" | "view") => void;
