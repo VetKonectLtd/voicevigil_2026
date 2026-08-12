@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { useRegisterUser } from "@/lib/hooks";
 import { useState } from "react";
@@ -19,7 +18,6 @@ const inputClass =
   "mt-2 w-full rounded-md border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-[#1565C0] focus:bg-white";
 
 export default function SignUpPage() {
-  const router = useRouter();
   const { mutateAsync: registerUser } = useRegisterUser();
   const [displayMsg, setDisplayMsg] = useState<string | null>(null);
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { X, Trash2, Edit2 } from "lucide-react";
+import { X, Trash2 } from "lucide-react";
 import { useAddComment, useDeleteComment, useGetComment } from "@/lib/hooks";
 
 interface CommentModalProps {

@@ -80,11 +80,7 @@ export default function PostCard({ post }: { post: any }) {
 
       {/* Modal Overlay Viewport Mount */}
       {showComments && (
-        <CommentModal
-          blogId={post.blog_id}
-          commentsList={[]}
-          onClose={() => setShowComments(false)}
-        />
+        <CommentModal blogId={post.blog_id} onClose={() => setShowComments(false)} />
       )}
     </article>
   );
