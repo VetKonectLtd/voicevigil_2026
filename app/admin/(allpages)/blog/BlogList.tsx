@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { IMAGE_BASE_URL } from "@/components/pathConfig";
 import { useBlogListing, useDeleteBlog } from "@/lib/hooks";
-import { MoreVertical, Edit2, Trash2, CheckCircle, X, Power } from "lucide-react";
+import { MoreVertical, Edit2, Trash2, X, Power } from "lucide-react";
 import CreateBlogForm from "./CreateBlogForm"; // Import your creation form component
 
 interface BlogListProps {
@@ -11,7 +11,7 @@ interface BlogListProps {
   onBlogsLoadedCount?: (count: number) => void;
 }
 
-export default function BlogList({ setActiveTab, onBlogsLoadedCount }: BlogListProps) {
+export default function BlogList({ onBlogsLoadedCount }: BlogListProps) {
   const { data, isLoading, error } = useBlogListing(1, 10);
   const deleteBlogMutation = useDeleteBlog();
 
