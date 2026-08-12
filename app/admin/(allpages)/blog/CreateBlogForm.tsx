@@ -144,11 +144,11 @@ export default function CreateBlogForm({ initialData, onSuccess }: CreateBlogFor
   const onSubmit = async (formData: BlogPostFormData) => {
     try {
       const file = formData.blog_image?.[0] || null;
-      let finalBase64Image: string = "";
+      let finalBase64Image: string | null = null;
 
       // 1. If user checked "remove_image", set empty image string
       if (formData.remove_image) {
-        finalBase64Image = "";
+        finalBase64Image = null;
       }
       // 2. If user uploaded a new file, compress and encode it
       else if (file) {
@@ -180,7 +180,7 @@ export default function CreateBlogForm({ initialData, onSuccess }: CreateBlogFor
         blog_text: formData.blog_text,
         blog_image: finalBase64Image,
         blog_status: Number(formData.blog_status),
-        remove_image: formData.remove_image ? 1 : 0,
+        remove_image: formData.remove_image,
       };
 
       console.log(`${isEditMode ? "Updating" : "Submitting"} blog payload:`, payload);
@@ -261,7 +261,7 @@ export default function CreateBlogForm({ initialData, onSuccess }: CreateBlogFor
           </label>
 
           {/* Remove Image Checkbox (only when image exists or in edit mode) */}
-          {(imagePreview || isEditMode) && (
+          {/* {(imagePreview || isEditMode) && (
             <label className="flex items-center gap-2 px-1 text-xs text-slate-600 cursor-pointer select-none">
               <input
                 type="checkbox"
@@ -270,7 +270,7 @@ export default function CreateBlogForm({ initialData, onSuccess }: CreateBlogFor
               />
               Remove existing image
             </label>
-          )}
+          )} */}
         </div>
 
         {/* Status Option (Publish vs Draft) */}

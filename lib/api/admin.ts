@@ -67,7 +67,7 @@ export const adminApi = {
     const blog_text = data.blog_text as string;
     const blog_id = data.blog_id as number;
     const blog_status = data.blog_status as number;
-    const remove_image = data.removed_image == 1 ? true : (false as boolean);
+    const remove_image = data.removed_image;
 
     return apiClient<any>("/vigil_blog_editing.php", {
       method: "POST",
