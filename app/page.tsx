@@ -10,10 +10,13 @@ import Hero from "@/components/home/Hero";
 import ProblemSection from "@/components/home/ProblemSection";
 import Solution from "@/components/home/Solution";
 import PoweredBy from "@/components/home/PoweredBy";
+import TeamSection from "@/components/home/TeamMembers";
+import { useRouter } from "next/navigation";
 
 export default function HomePage() {
   const [activeTestimony, setActiveTestimony] = useState(0);
   const [isPartnerModalOpen, setPartnerModalOpen] = useState(false);
+  const router = useRouter();
 
   const prev = () => setActiveTestimony((p) => (p - 1 + testimonials.length) % testimonials.length);
   const next = () => setActiveTestimony((p) => (p + 1) % testimonials.length);
@@ -184,6 +187,8 @@ export default function HomePage() {
         </div>
       </section>
 
+      <TeamSection />
+
       {/* Future CTA */}
       <section className="bg-white px-5 py-12 text-center sm:px-10 md:py-[72px]">
         <h2 className="mx-auto mb-3 max-w-[760px] text-[1.55rem] font-bold leading-[1.2] text-[#1F2937] md:text-[1.9rem]">
@@ -203,7 +208,9 @@ export default function HomePage() {
         </div>
         <div className="flex justify-center gap-4 max-[600px]:flex-col max-[600px]:items-center">
           <button className={smallBtn("blueOutline")}>Contact Us</button>
-          <button className={smallBtn("blue")}>Join Voice Vigil</button>
+          <button className={smallBtn("blue")} onClick={() => router.push("/login")}>
+            Join Voice Vigil
+          </button>
         </div>
       </section>
     </main>

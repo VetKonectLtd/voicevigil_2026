@@ -35,7 +35,7 @@ export default function Footer() {
 
           <p className="mt-7 text-[13px] text-[#2f2f2f]">Enter your email to receive newsletter</p>
 
-          <div className="mt-4 flex w-full max-w-[248px] items-center rounded-full border border-[#d9d9d9] bg-white p-1 shadow-[0_2px_8px_rgba(0,0,0,0.08)]">
+          <div className="mt-4 flex w-full max-w-[270px] items-center rounded-full border border-[#d9d9d9] bg-white p-1 shadow-[0_2px_8px_rgba(0,0,0,0.08)]">
             <input
               type="email"
               placeholder="example@example.com"
