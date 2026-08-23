@@ -143,7 +143,17 @@ export default function HomePage() {
           />
         </div>
         <div className="flex flex-wrap items-center justify-center gap-3 max-[600px]:flex-col">
-          <button className={smallBtn("orange")}>Access Resources</button>
+          <button
+            className={smallBtn("orange")}
+            onClick={() =>
+              window.open(
+                "https://drive.google.com/drive/folders/1DbxzQoXaCsBlEPnagmyU6XSO2b8Hmfn7",
+                "_blank",
+              )
+            }
+          >
+            Access Resources
+          </button>
           <button className={smallBtn("blueOutline")}>Become a Language Champion</button>
           <button className={smallBtn("blue")} onClick={() => setPartnerModalOpen(true)}>
             Partner With Us
