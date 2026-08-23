@@ -12,6 +12,7 @@ import Solution from "@/components/home/Solution";
 import PoweredBy from "@/components/home/PoweredBy";
 import TeamSection from "@/components/home/TeamMembers";
 import { useRouter } from "next/navigation";
+import SubLogos from "@/components/home/Sub-Logos";
 
 export default function HomePage() {
   const [activeTestimony, setActiveTestimony] = useState(0);
@@ -70,7 +71,7 @@ export default function HomePage() {
               <article className="w-full shrink-0 px-2" key={t.name}>
                 <div className="relative mx-auto flex max-w-[420px] flex-col items-center rounded-2xl border border-[#ECEEF2] bg-white px-6 pb-7 pt-9 shadow-[0_6px_18px_rgba(0,0,0,0.04)]">
                   {/* Optimized Avatar Container */}
-                  <div className="absolute -top-5 z-10 flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border border-[#39B96F] bg-[#E9FFF1] shadow-sm">
+                  <div className="absolute -top-5 z-10 flex h-20 w-20 items-center justify-center overflow-hidden rounded-full border border-[#39B96F] bg-[#E9FFF1] shadow-sm">
                     <Image
                       src={t.avatar}
                       alt={`${t.name}'s avatar`}
@@ -81,7 +82,7 @@ export default function HomePage() {
                     />
                   </div>
 
-                  <p className="mb-5 mt-2 text-center text-[0.76rem] leading-[1.6] text-[#5C6472]">
+                  <p className="my-7 text-center text-[0.76rem] leading-[1.6] text-[#5C6472]">
                     &quot;{t.quote}&quot;
                   </p>
                   <p className="text-[0.9rem] font-semibold text-[#2B3240]">{t.name}</p>
@@ -160,31 +161,7 @@ export default function HomePage() {
           Voice Vigil collaborates with universities, Veterinary professionals, public health
           experts, and community organizations to expand access to AMR education.
         </p>
-        <div className="flex flex-wrap items-center justify-center gap-16 sm:gap-12">
-          <Image
-            src="/voicevigil.png"
-            alt="VoiceVigil"
-            width={128}
-            height={128}
-            className="h-32 w-auto object-contain"
-          />
-          <div className="rounded-xl bg-[#D9D9D959] p-3">
-            <Image
-              src="/trinity.png"
-              alt="Trinity"
-              width={128}
-              height={128}
-              className="h-32 w-auto object-contain"
-            />
-          </div>
-          <Image
-            src="/vetkonect.png"
-            alt="VetKonect"
-            width={128}
-            height={128}
-            className="h-32 w-auto object-contain"
-          />
-        </div>
+        <SubLogos />
       </section>
 
       <TeamSection />

@@ -6,6 +6,12 @@ const teamMembers = [
   { name: "Dr. Jacob Undo", role: "Co-Team Lead", image: "/team/team2.png" },
   { name: "Bramwel James", role: "Capacity Building & Advocacy", image: "/team/team3.png" },
   { name: "OYELADE Blessing", role: "Project Manager", image: "/team/team4.png" },
+  {
+    name: "Awasume Jonathan",
+    role: "Logistics & Resources Mobilization",
+    image: "/team/team5.png",
+  },
+  { name: "Awor Rebecca", role: "Communications Lead", image: "/team/team6.png" },
   // Add additional members as needed (e.g., team5.png, team6.png)
 ];
 

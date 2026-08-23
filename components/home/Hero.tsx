@@ -145,7 +145,15 @@ export default function Hero({ setPartnerModalOpen }: HeroType) {
         {/* Action Callouts */}
         {/* Action Callouts */}
         <div className="mx-auto flex w-full max-w-[420px] flex-col items-stretch gap-3 pt-2 sm:max-w-none sm:w-auto sm:flex-row sm:flex-wrap sm:items-center sm:justify-center">
-          <button className={`${orangeBtn} w-full justify-center sm:w-auto`}>
+          <button
+            className={`${orangeBtn} w-full justify-center sm:w-auto`}
+            onClick={() =>
+              window.open(
+                "https://drive.google.com/drive/folders/1DbxzQoXaCsBlEPnagmyU6XSO2b8Hmfn7",
+                "_blank",
+              )
+            }
+          >
             Access Resources
           </button>
           <button className={`${blueOutlineBtn} w-full justify-center sm:w-auto`}>
