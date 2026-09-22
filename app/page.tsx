@@ -162,6 +162,8 @@ export default function HomePage() {
         </div>
       </section>
 
+      <TeamSection />
+
       {/* Partners */}
       <section className="mx-auto max-w-full bg-[#FBFBFB] px-5 py-12 text-center sm:px-10 md:py-[72px]">
         <h2 className="mx-auto mb-3 max-w-[760px] text-[1.55rem] font-bold leading-[1.2] text-[#1F2937] md:text-[1.9rem]">
@@ -173,8 +175,6 @@ export default function HomePage() {
         </p>
         <SubLogos />
       </section>
-
-      <TeamSection />
 
       {/* Future CTA */}
       <section className="bg-white px-5 py-12 text-center sm:px-10 md:py-[72px]">
